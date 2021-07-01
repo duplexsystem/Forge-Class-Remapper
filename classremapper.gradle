@@ -87,7 +87,8 @@ class CreatedChainMojmapsTask extends DefaultTask {
 
     @Internal
     InputStream getMojmaps() {
-        try (InputStream manIn = new URL(MANIFEST_URL).openStream()) {
+        try {
+            InputStream manIn = new URL(MANIFEST_URL).openStream()
             URL url = GSON.fromJson(new InputStreamReader(manIn), ManifestJson.class).getUrl(mcVersion)
 
             try (InputStream verIn = url.openStream()) {
