@@ -90,8 +90,9 @@ class CreatedChainMojmapsTask extends DefaultTask {
         try {
             InputStream manIn = new URL(MANIFEST_URL).openStream()
             URL url = GSON.fromJson(new InputStreamReader(manIn), ManifestJson.class).getUrl(mcVersion)
-
-            try (InputStream verIn = url.openStream()) {
+            
+            InputStream verIn = url.openStream()
+            try {
                 VersionJson json = GSON.fromJson(new InputStreamReader(verIn), VersionJson.class)
 
                 VersionJson.Download download = json.downloads.get("client_mappings")
