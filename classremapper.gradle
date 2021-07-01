@@ -98,8 +98,8 @@ class CreatedChainMojmapsTask extends DefaultTask {
                 VersionJson.Download download = json.downloads.get("client_mappings")
 
                 return download.url.openStream()
-            }
-        }
+            } catch (Exception e) {}
+        } catch (Exception e) {}
     }
 }
 
